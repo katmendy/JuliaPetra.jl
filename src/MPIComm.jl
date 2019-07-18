@@ -55,11 +55,11 @@ function gatherAll(comm::MPIComm, myVals::AbstractArray{T})::Array{T} where T
 end
 
 function sumAll(comm::MPIComm, partialsums::AbstractArray{T})::Array{T} where T
-    MPI.allreduce(partialsums, +, comm.mpiComm)
+    MPI.Allreduce(partialsums, +, comm.mpiComm)
 end
 
 function maxAll(comm::MPIComm, partialmaxes::AbstractArray{T})::Array{T} where T
-    MPI.allreduce(partialmaxes, max, comm.mpiComm)
+    MPI.Allreduce(partialmaxes, max, comm.mpiComm)
 end
 
 function maxAll(comm::MPIComm, partialmaxes::AbstractArray{Bool})::Array{Bool}
@@ -67,7 +67,7 @@ function maxAll(comm::MPIComm, partialmaxes::AbstractArray{Bool})::Array{Bool}
 end
 
 function minAll(comm::MPIComm, partialmins::AbstractArray{T})::Array{T} where T
-    MPI.allreduce(partialmins, min, comm.mpiComm)
+    MPI.Allreduce(partialmins, min, comm.mpiComm)
 end
 
 function minAll(comm::MPIComm, partialmins::AbstractArray{Bool})::Array{Bool}
